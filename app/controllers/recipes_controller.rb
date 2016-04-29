@@ -14,10 +14,10 @@ class RecipesController < ApplicationController
     @recipe = current_user.recipes.new(recipe_params)
     if @recipe.save
       flash[:notice] = "Successfully created recipe."
-      redirect_to "/recipes/#{@recipe.id}"
+      redirect_to recipe_path(@recipe)
     else
       flash[:error] = @recipe.errors.full_messages.join(", ")
-      redirect_to "/recipes/new"
+      redirect_to new_recipe_path
     end
   end
 

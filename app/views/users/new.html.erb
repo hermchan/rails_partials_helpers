@@ -1,6 +1,24 @@
 <h1>Sign Up</h1>
 <hr>
-<form action="/users" method="post">
+
+<%= form_for @user do |f| %>
+<div class="form-group">
+  <%= f.label :email %>
+  <%= f.email_field(:email, placeholder: "email@example.com", class: "form-control") %>
+</div>
+<div class="form-group">
+  <%= f.label :password %>
+  <%= f.password_field(:password, placeholder: "Must be at least 6 characters", class: "form-control") %>
+</div>
+<div class="form-group">
+  <%= f.label :password_conformation %>
+  <%= f.password_field(:password_conformation, class: "form-control", placeholder: "Confirm password") %>
+</div>
+<%= f.submit "Sign Up", class: "btn btn-block" "btn-default" %>
+
+<% end %>
+
+<!-- <form action="/users" method="post">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <div class="form-group">
     <label for="user_email">Email</label>
@@ -15,6 +33,6 @@
     <input type="password" name="user[password_confirmation]" class="form-control" id="user_password_confirmation" placeholder="Confirm password">
   </div>
   <input type="submit" value="Sign Up" class="btn btn-block btn-default">
-</form>
+</form> -->
 <br>
-<p>Already have an account? <a href="/login">Click here</a> to log in.</p>
+<p>Already have an account? <%= link_to "Click here", login_path %></p>
